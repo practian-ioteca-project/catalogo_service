@@ -2,6 +2,9 @@ Resource server API REST:
 -------------------
 
 (ve_...) D:\practian o XXX\catalogo_service>pip install -r requirements.txt
+(ve_...) D:\practian o XXX\catalogo_service>pip install django-backend-utils-0.1.zip
+(ve_...) D:\practian o XXX\catalogo_service>pip install django-oauth2-backend-0.1.zip
+(ve_...) D:\practian o XXX\catalogo_service>manage.py migrate
 
 (ve_...) D:\practian o XXX\catalogo_service>manage.py runserver
 Performing system checks...
@@ -14,8 +17,3 @@ Quit the server with CTRL-BREAK.
 
 // USER : admin
 // PASSWORD : 12345
-
-Si está creando desde cero
--------------------
-(ve_...) D:\practian o XXX\catalogo_service>manage.py migrate
-(ve_...) D:\practian o XXX\catalogo_service>manage.py runserver
