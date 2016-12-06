@@ -1,10 +1,18 @@
 ########################################
-Resource server 3: Catalogo Service
+catalogo_service
 ########################################
 
 .. class:: no-web
 
-    Catalogo Service es una app  ``Resource server`` construida sobre `Django`_ y define un modelo de *autenticación/autorización* para **aplicaciones SaaS** para los proyectos de `Django`_.
+    catalogo_service es un microservicio **Resource server** que se autentica y autoriza con el `Authorization server`.
+
+
+
+    .. image:: https://github.com/practian-ioteca-project/catalogo_service/blob/master/media/doc/e2-resource_server_catalogo_service.png
+        :alt: HTTPie compared to cURL
+        :width: 100%
+        :align: center
+
 
 
 
@@ -22,77 +30,148 @@ Resource server 3: Catalogo Service
 Installation
 ============
 
-(ve_...) D:\practian o XXX\catalogo_service>pip install -r requirements.txt
+--------------
+Requirements
+--------------
 
-Descargar la distribución de https://github.com/practian-reapps
+* Python 3.4, 3.5
+* Django 1.9, 1.10
 
 
-(ve_...) D:\practian o XXX\catalogo_service>pip install https://github.com/practian-reapps/django-backend-utils/raw/master/dist/django-backend-utils-0.1.zip
-
-(ve_...) D:\practian o XXX\catalogo_service>pip install https://github.com/practian-reapps/django-oauth2-backend/raw/master/dist/django-oauth2-backend-0.1.zip
-
-(ve_...) D:\practian o XXX\catalogo_service>manage.py migrate
-
-(ve_...) D:\practian o XXX\catalogo_service>manage.py runserver 8003
-Performing system checks...
-
-System check identified no issues (0 silenced).
-November 29, 2016 - 19:11:07
-Django version 1.10.3, using settings 'catalogo_main.settings'
-Starting development server at http://127.0.0.1:8003/
-Quit the server with CTRL-BREAK.
-
-// USER : admin
-// PASSWORD : 12345
 
 -------------------
 Development version
 -------------------
 
-The **latest development version** can be installed directly from github_:
+Clone **latest development version** directly from github_:
 
 .. code-block:: bash
     
     # Universal
-    $ pip install --upgrade https://github.com/practian-reapps/django-backend-utils/raw/master/dist/django-backend-utils-0.1.zip
+    
+    E:\dev>git clone https://github.com/practian-ioteca-project/catalogo_service.git
 
-or clone from github_:
+Cree un entorno virtual::
+
+    E:\dev>virtualenv ve_catalogo
+    E:\dev>ve_catalogo\Scripts\activate
+
+Instale las dependencias::
+
+    (ve_catalogo) E:\dev>cd catalogo_service
+    (ve_catalogo) E:\dev\catalogo_service>pip install -r requirements.txt
+
+Sync your database y Cree un super usuario::
+
+    (ve_catalogo) E:\dev\catalogo_service>manage.py migrate
+
+    (ve_catalogo) E:\dev\catalogo_service>manage.py createsupersuer
+
+    # deberás crear las apps en http://localhost:7001/o/applications/ 
+    # y en el cliente https://github.com/practian-ioteca-project/catalogo_web/blob/master/app/config.js 
+    # actualizar la variable
+
+    oauth2Service.clientId = "tu nuevo client_id";
+
+O en MySQL admin, restrure la DB de https://github.com/practian-ioteca-project/catalogo_service/blob/master/upeu_db.sql ::
+
+	# USER : admin
+	# PASSWORD : 12345
+
+
+Run the app in 8003 port::
+
+    (ve_catalogo) E:\dev\catalogo_service>manage.py runserver 8003
+
+
+
+===========
+Revise las configuraciones
+===========
+
+1. INSTALLED_APPS setting like this:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/practian-reapps/django-backend-utils.git
+	INSTALLED_APPS = [
+	    'django.contrib.admin',
+	    'django.contrib.auth',
+	    'django.contrib.contenttypes',
+	    'django.contrib.sessions',
+	    'django.contrib.messages',
+	    'django.contrib.staticfiles',
 
-(If ``pip`` installation fails for some reason, you can try ``easy_install`` as a fallback.)
+	    'django.contrib.admindocs',
+	    'rest_framework',
+	    'corsheaders',
+	    'oauth2_provider',
+
+	    'oauth2_backend',
+	    'backend_utils',
+	]
+
+2. AUTH_USER_MODEL setting like this::
+
+	AUTH_USER_MODEL = 'oauth2_backend.User' 
+
+3. DATABASES setting like this::
+
+	# Database mysql
+	DATABASES = {
+	    'default': {
+	        'ENGINE': 'django.db.backends.mysql',
+	        'OPTIONS': {
+	            'read_default_file': 'credentials.cnf',  # read_default_file solo funciona con mysql
+	        },
+	    },
+	}	
+
+4. credentials.cnf file setting like this::
+
+	# my.cnf
+	[client]
+	database = upeu_db
+	user = root
+	password = 12345
+	host = 127.0.0.1
+	port = 3306
+	default-character-set = utf8
 
 
---------------
-Python version
---------------
 
-Python 3.4.4 is recommended to install Django backend_utils
-
-
-=====
-Usage
-=====
+====
+Meta
+====
 
 
-Quick start
------------
+-------
+Licence
+-------
 
-1. Add "backend_utils" to your INSTALLED_APPS setting like this::
-
-    INSTALLED_APPS = [
-        ...
-
-        'backend_utils',
-    ]
+BSD-3-Clause: `LICENSE <https://github.com/practian-ioteca-project/oauth2_backend_service/blob/master/LICENSE>`_.
 
 
 
-.. _Django OAuth Toolkit: https://django-oauth-toolkit.readthedocs.io
+-------
+Authors
+-------
+
+- Angel Sullon Macalupu (asullom@gmail.com)
+
+
+
+-------
+Contributors
+-------
+
+See https://github.com/practian-ioteca-project/catalogo_service/graphs/contributors
+
+.. _github: https://github.com/practian-ioteca-project/catalogo_service
 .. _Django: https://www.djangoproject.com
-.. _github: https://github.com/practian-reapps/django-backend-utils
+.. _Django REST Framework: http://www.django-rest-framework.org
+.. _Django OAuth Toolkit: https://django-oauth-toolkit.readthedocs.io
+.. _oauth2_backend: https://github.com/practian-reapps/django-oauth2-backend
+.. _Authorization server: https://github.com/practian-ioteca-project/oauth2_backend_service
 
 
 
