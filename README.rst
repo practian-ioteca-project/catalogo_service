@@ -4,7 +4,7 @@ catalogo_service
 
 .. class:: no-web
 
-    catalogo_service es un microservicio **Resource server** que se autentica y autoriza con el `Authorization server`.
+    catalogo_service es un microservicio **Resource server** que se autentica y autoriza con el `Authorization server`_.
 
 
 
@@ -93,6 +93,7 @@ Revise las configuraciones
 
 .. code-block:: bash
 
+
 	INSTALLED_APPS = [
 	    'django.contrib.admin',
 	    'django.contrib.auth',
@@ -108,6 +109,8 @@ Revise las configuraciones
 
 	    'oauth2_backend',
 	    'backend_utils',
+
+	    'catalogo',
 	]
 
 2. AUTH_USER_MODEL setting like this::
