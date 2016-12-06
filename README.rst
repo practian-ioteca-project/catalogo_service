@@ -9,7 +9,7 @@ catalogo_service
 
 
     .. image:: https://github.com/practian-ioteca-project/catalogo_service/blob/master/media/doc/e2-resource_server_catalogo_service.png
-        :alt: HTTPie compared to cURL
+        :alt: catalogo_service
         :width: 100%
         :align: center
 
@@ -61,13 +61,24 @@ Instale las dependencias::
     (ve_catalogo) E:\dev>cd catalogo_service
     (ve_catalogo) E:\dev\catalogo_service>pip install -r requirements.txt
 
-Sync your database y Cree un super usuario::
+También instale oauth2-backend::
+
+    (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-oauth2-backend/blob/master/dist/django-oauth2-backend-0.1.zip
+
+y backend-utils::
+
+    (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-backend-utils/blob/master/dist/django-backend-utils-0.1.zip
+
+
+Sync your database::
 
     (ve_catalogo) E:\dev\catalogo_service>manage.py migrate
 
+Si ha creado de cero la base de datos, deberá correr createsupersuer::
+
     (ve_catalogo) E:\dev\catalogo_service>manage.py createsupersuer
 
-    # deberás crear las apps en http://localhost:7001/o/applications/ 
+    # también deberás crear las apps en http://localhost:7001/o/applications/ 
     # y en el cliente https://github.com/practian-ioteca-project/catalogo_web/blob/master/app/config.js 
     # actualizar la variable
 
