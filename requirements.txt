@@ -9,5 +9,5 @@ Pillow==3.4.2
 PyMySQL==0.7.9
 six==1.10.0
 
-# django-backend-utils==0.0.1 pip install django-backend-utils-0.1.zip
-# django-oauth2-backend==0.0.1 pip install django-oauth2-backend-0.1.zip
+# django-backend-utils==0.1 pip install django-backend-utils-0.1.zip
+# django-oauth2-backend==0.1 pip install django-oauth2-backend-0.1.zip

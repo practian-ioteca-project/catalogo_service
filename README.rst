@@ -61,11 +61,11 @@ Instale las dependencias::
     (ve_catalogo) E:\dev>cd catalogo_service
     (ve_catalogo) E:\dev\catalogo_service>pip install -r requirements.txt
 
-También instale oauth2-backend::
+También instale `Django OAuth2 Backend`_::
 
     (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-oauth2-backend/blob/master/dist/django-oauth2-backend-0.1.zip
 
-y backend-utils::
+y `Django Backend Utils`_::
 
     (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-backend-utils/blob/master/dist/django-backend-utils-0.1.zip
 
@@ -184,7 +184,8 @@ See https://github.com/practian-ioteca-project/catalogo_service/graphs/contribut
 .. _Django: https://www.djangoproject.com
 .. _Django REST Framework: http://www.django-rest-framework.org
 .. _Django OAuth Toolkit: https://django-oauth-toolkit.readthedocs.io
-.. _oauth2_backend: https://github.com/practian-reapps/django-oauth2-backend
+.. _Django OAuth2 Backend: https://github.com/practian-reapps/django-oauth2-backend
+.. _Django Backend Utils: https://github.com/practian-reapps/django-backend-utils
 .. _Authorization server: https://github.com/practian-ioteca-project/oauth2_backend_service
 
 
