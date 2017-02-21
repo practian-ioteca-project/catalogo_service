@@ -8,7 +8,7 @@ catalogo_service
 
 
 
-    .. image:: https://github.com/practian-ioteca-project/catalogo_service/blob/master/media/doc/e2-resource_server_catalogo_service.png
+    .. image:: https://github.com/practian-ioteca-project/catalogo_service/blob/master/media/e2-resource_server_catalogo_service.png
         :alt: catalogo_service
         :width: 100%
         :align: center
