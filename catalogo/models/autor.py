@@ -3,6 +3,9 @@ from django.db import models
 
 
 class Autor(models.Model):
+    """
+    docs
+    """
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nombre = models.CharField(max_length=50)
     direccion = models.TextField(null=True, blank=True)
@@ -11,6 +14,9 @@ class Autor(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        """
+        docs
+        """
         verbose_name = "Autor"
         verbose_name_plural = "Autores"
         permissions = (

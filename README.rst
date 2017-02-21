@@ -63,11 +63,11 @@ Instale las dependencias::
 
 También instale `Django OAuth2 Backend`_::
 
-    (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-oauth2-backend/blob/master/dist/django-oauth2-backend-0.1.zip
+    (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-oauth2-backend/raw/master/dist/django-oauth2-backend-0.1.zip
 
 y `Django Backend Utils`_::
 
-    (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-backend-utils/blob/master/dist/django-backend-utils-0.1.zip
+    (ve_catalogo) E:\dev\catalogo_service>pip install https://github.com/practian-reapps/django-backend-utils/raw/master/dist/django-backend-utils-0.1.zip
 
 
 Sync your database::
